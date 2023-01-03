@@ -1,0 +1,46 @@
+<table class="table table-bordered table-striped text-center">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products; let indice = index">
+            <td>{{product.name}}</td>
+            <td>{{product.brand}}</td>
+            <td>{{product.price}}</td>
+            <td>
+                <button class="btn btn-outline-warning" (click)="handleSelect(indice)" data-bs-toggle="modal" data-bs-target="#exampleModal">Select</button>
+                <button class="btn btn-outline-danger mx-3" (click)="handleDelete(indice)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit The Product</h1>
+            </div>
+            <div class="modal-body">
+                <form autocomplete="off" [formGroup]="formulario">
+                    <input type="text" formControlName="id" hidden>
+                    <label for="product" class="mb-2">Product Name</label>
+                    <input id="product" type="text" class="form-control mb-3" formControlName="name">
+                    <label for="brand" class="mb-2">Brand Name</label>
+                    <input id="brand" type="text" class="form-control mb-3" formControlName="brand">
+                    <label for="price" class="mb-2">Product Price</label>
+                    <input id="price" type="number" class="form-control mb-3" formControlName="price">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="handleEdit()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
