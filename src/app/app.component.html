@@ -1,20 +1,28 @@
-<div>
-  <h2 class="text-center py-4">Testing Bootstrap Modals</h2>
-  <div class="container">
-    <div>
-      <app-form
-        [product]="product"
-        (submit)="onSubmit($event)"
-      ></app-form>
-    </div>
-    <div>
-      <app-tabela
-        [products]="products"
-        [product]="product"
-        (select)="onSelect($event)"
-        (delete)="onDelete($event)"
-        (edit)="onEdit($event)"
-      ></app-tabela>
-    </div>
+<div class="container">
+  <div class="content">
+    <h1>{{ contador }}</h1>
+    <form autocomplete="off" [formGroup]="myForm">
+      <div class="inputs">
+        <section>
+          <label for="tempo">Tempo:</label>
+          <input type="number" id="tempo" formControlName="tempo" />
+        </section>
+        <section>
+          <label for="potencia">Potência:</label>
+          <input type="number" id="potencia" formControlName="potencia" />
+        </section>
+      </div>
+      <section class="btns">
+        <button type="submit" (click)="iniciarAquecimento()">
+          <span>Iniciar</span>
+          <span>+30s</span>
+        </button>
+        <button (click)="pausarCancelar()">
+          <span>Pausar</span>
+          <span>Cancelar</span>
+        </button>
+      </section>
+    </form>
+    <p>{{ status }}</p>
   </div>
 </div>

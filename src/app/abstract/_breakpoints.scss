@@ -1,0 +1,16 @@
+$breakpoints: (
+    'sm': 480px,
+    'md': 720px,
+);
+
+@mixin small {
+    @media(min-width: map-get($breakpoints, 'sm')) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media(min-width: map-get($breakpoints, 'md')) {
+        @content;
+    }
+}
